@@ -1,0 +1,215 @@
+Rajesh Kumar
+==================
+Docker - 2 days
+K8s - 3 Days
+==================
+Lab - 
+VMs - Mr Shiva - 81062 70903
+Citrix - Ali.
+----------------------------
+Demo - EC2 instance
+==================================
+2 BREAK - 20 mins.
+		11:00 AM
+		4:00 PM
+1 Lunch BREAK 
+	- 1 PM IST - 2 PM IST
+=====================================
+8105843520 | rajesh@devopsschool.com
+=====================================
+Pre Test	 - 30 Mins - Today
+Post Test	 - 30 mins - Last day - Last hour	
+==========================================================
+https://www.devopsschool.com/lms
+
+Docker Essential Quiz - 1		15 mins
+https://www.devopsschool.com/lms/mod/quiz/view.php?id=250
+
+Kubernetes Essential Quiz - 1		15 mins
+https://www.devopsschool.com/lms/mod/quiz/view.php?id=319
+
+=========================================================================
+=========================================================================
+Docker 
+K8s
+=====================
+www.DevOpsSchool.com
+=====================
+What is Docker?
+---------------------
+	Container mgmt tool.
+	From Soloman Hykes
+	Written in Golang
+	Release
+		CE - Part of the session	- OPEN SOURCE
+		EE -
+	https://www.devopsschool.com/blog/difference-between-docker-community-edition-ce-vs-docker-enterprise-edition-ee-in-2020/
+	https://www.devopsschool.com/blog/what-is-docker-enterprise-3-0-detailed-exaplanations/ 
+	LAtest version 19.X
+
+	Tool
+	- Save Cost
+	- Save Time
+	- Improve Quality
+	-----------------------------
+	- To run APPs.
+		in the CONTAINER.
+
+What is Container?
+---------------------
+	- Lightweight APP Runtime independent env
+
+	- Its just a init of 
+			USER NS
+			& 
+			Each user get their own
+					- NET NS
+					- MNT NS
+					- PID NS
+
+How can we run APPS?
+What are the components we need to have to run APPS or Software?
+Pre-req for running software?
+--------------------------------------------------------
+
+HARDWARE
+ OS
+   Kernal (TYPES)				----------------OS------------------------
+	Namespace				ALLOWD		NEED		CAN GET IT
+	 - USER NS -> Init USER AREA		MANY		1		MANY			
+	 - MNT NS -> Init mount fs		ONE		1		MANY
+ 	 - PID NS -> init process table		ONE		1		MANY
+	 - NET NS -> Init network		ONE		1		MANY
+
+	 - CGROUPS - Allocating CPU and RAM
+	 - CAPABILITIES - ROOT or NOT ROOT
+----------------------------------------------------------------------------------------------
+History of Computing
+=============================================================================================
+1990s					2000					NOW
+----------------------------- Where we r runnung apps ---------------------------------------
+PHYSICAL Server			Virtualization					Containers
+		 INTERNET				Internet is cons* us
+	
+
+
+KERNAL
+The kernel is a computer program at the core of a computer's operating system with complete control over everything in the system. 
+====================================================
+Other tools?
+-------------
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+How Docker Works? Docker Architecture
+=====================================
+Human -> Docker Client ----REST---> Docker Deamon(Server) -> ContainerD -> Kernal
+	==================================================
+				Docker Engine
+
+ContainerD
+
+Components of Docker?
+=======================
+1. Docker Engine
+2. Docker Image
+
+What is OS Image?
+-----------------
+	Consist of FILE SYSTEM(S)			e.g
+	Type		
+		BOOT FILE SYSTEM - Kernal		LINUX
+		+
+		ROOT FILE SYSTEM			ubuntu
+		+ 
+		USER FILE SYSTEM			root
+		+ 
+		APP FILE SYSTEM				ls
+
+What is Docker Image?
+	Consist of FILE SYSTEM(S)
+	Type
+		ROOT FILE SYSTEM			ubuntu or centos		
+		+ 
+		USER FILE SYSTEM			apache or tomcat
+		+ 
+		APP FILE SYSTEM				apache or tomcat
+
+	ONE COPY OF Image get MOUNTED to each USER == ONE CONTAINER
+	Whatever you have in image = u see inside a container.
+
+3. Docker Registry
+	  contains Repos
+		   Contains
+			FILE SYSTEM(S) of Image
+	PUB
+		hub.docker.com
+		Google Registry
+	PVT
+		Artifactory
+		Nexus
+4. Docker Container
+
+	When we run image
+			ONE USER GET CREATED using USER NS
+			and get mounted from ONE COPY Of Image
+			and get PID from PID NS
+			and get network from NET NS
+
+
+
+Docker workflow
+===============================================
+Humna -> RUN IMAGE using DOcker Client --> Docker Deamon
+				CHECK - DO I HAVE THAT IMAGE???
+				- NO 	--- DOWNLOAD FROM HUB.DOCKER.COM TO LOCAL Registry
+					--- Create a container
+				- YES
+					--- Create a container
+
+Vms LifeCYCLE
+================================
+create -> start -> stop -> start -> pause -> unpause -> kill -> remove
+		  ===============
+			restart -> pause -> unpause 
+
+Container LifeCYCLE
+================================
+create -> start -> stop -> start -> pause -> unpause -> kill -> remove
+		  ===============
+			restart -> pause -> unpause 
+
+How to install Docker?
+================================
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+13.232.166.0
+
+
+ 1  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    2  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    3  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    4  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    5  sudo yum install -y docker-ce
+    6  docker -v
+    7  sudo systemctl enable docker
+    8  sudo systemctl start docker
+    9  docker info
+   10  clear
+   11  which docker
+   12  ps -eaf | grep docker
+   13  which containerd
+   14  history
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
