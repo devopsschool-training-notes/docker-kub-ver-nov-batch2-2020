@@ -281,6 +281,180 @@ Diff Between Pause Vs unPause
    63  docker help kill
    64  history
 
+==================================================================
+==================================================================
+How to use Container???
+==================================================================
+==================================================================
+
+What is Container?
+
+	When we run image
+			ONE USER GET CREATED using USER NS
+			and get mounted from ONE COPY Of Image
+			and get PID from PID NS
+			and get network from NET NS
+ 65  clear
+   66  id
+   67  ps
+   68  ps -eaf | grep 8564
+   69  ps -eaf | grep 8562
+   70  ps -eaf | grep 7406
+   71  ps -eaf | grep 7405
+   72  ps -eaf | grep 5304
+   73  ps -eaf | grep 1207
+   74  ps -eaf
+   75  clear
+   76  ps
+   77  ps -eaf | grep docker
+   78  docker create jenkins
+   79  ps -eaf | grep docker
+   80  docker start 8b2a948a9c91cfb4994ab305658305586d70531f69648d7eff1c32763eaa572c
+   81  ps -eaf | grep docker
+   82  ps -eaf | grep 19020
+   83  ps -eaf | grep 8901
+   84  clear
+
+ 85  df -kh
+   86  ps -eaf
+   87  clea
+   88  ip a
+   89  clear
+   90  ls
+   91  clear
+   92  docker ps
+   93  docker create jenkins
+   94  docker ps -a
+   95  docker start 17960f90fc5d
+   96  clear
+   97  docker ps -a
+   98  docker exec 17960f90fc5d df -kh
+   99  docker exec 8b2a948a9c91 df -kh
+  100  clear
+  101  ls
+  102  history
+  103  docker exec 17960f90fc5d ls /tmp
+  104  docker exec 8b2a948a9c91 ls /tmp
+  105  docker exec 8b2a948a9c91 touch /tmp/rajesh.txt
+  106  docker exec 8b2a948a9c91 ls /tmp
+  107  docker exec 17960f90fc5dls /tmp
+  108  docker exec 17960f90fc5d ls /tmp
+  109  clear
+  110  ps -eaf
+  111  clear
+  112  docker ps
+  113  docker exec 17960f90fc5d ps -eaf
+  114  docker exec 8b2a948a9c91 ps -eaf
+  115  clear
+  116  docker ps
+  117  docker inspect 17960f90fc5d | grep -i ip
+  118  docker inspect 8b2a948a9c91 | grep -i ip
+  119  history
+
+
+Importance of PID1?
+=============================================================================================
+Physical Server 		Virtual Server			Container
+is running			is running			is running
+coz of 				coz of				coz of 
+PID 1				PID 1				PID 1
+is running			is running			is running	
+---------------------
+PID1 is SYSTEMD			PID1 is SYSTEMD			PID1 is ANYTHING
+								- e.g
+								/bin/bash
+								ls
+								java
+								python
+								ruby
+								abc
+
+Means 
+PID 1 of the container get exited - container gets exited as well .
+
+===================================================================
+RUN
+-----------------
+create + start + BECOME a container or ATTACHED to container PID1
+
+RUN -d
+-----------------
+create + start + DO NOT BECOME a container or DO NOT ATTACHED to container PID1
+
+ 120  clear
+  121  ps -eaf
+  122  clear
+  123  docker ps
+  124  ps
+  125  clear
+  126  docker run jenkins
+  127  docker ps -a
+  128  clear
+  129  docker run ubuntu
+  130  docker ps -a
+  131  ls
+  132  dir
+  133  bash
+
+  1  clear
+    2  docker run -d jenkins
+    3  docker ps
+    4  docker run -d jenkins
+    5  docker ps
+    6  docker run -d ubuntu
+    7  docker ps
+
+============================================================
+GO INSIDE OF CONTAINER
+----------------------------
+exec
+	THIS WOULD Execute an Executable INSIDE a container
+	with -it and /bash/bash - You can go inside a container.
+
+How to come out of the container without exiting?
+- cntr + p +q 
+
+ 135  clear
+  136  docker ps
+  137  docker exec 716b712593bf ls
+  138  clear
+  139  docker exec 716b712593bf df -kh
+  140  docker exec 716b712593bf git
+  141  clear
+  142  docker exec 716b712593bf ntp
+  143  docker exec 716b712593bf dfasas
+  144  gfdfgd
+  145  ls
+  146  clear
+  147  ls
+  148  docker ps
+  149  docker exec 716b712593bf /bin/bash
+  150  docker exec -it 716b712593bf /bin/bash
+  151  docker ps
+  152  clear
+  153  docker run -it ubuntu /bin/bash
+  154  docker run -it ubuntu /bin/bash
+  155  docker ps
+  156  history
+
+
+attach
+	This get attached to the PID1 of the running container.
+
+ 161  docker attach 716b712593bf	# jenkins
+  162  clear
+  163  docker ps
+  164  docker attach d9f4869a6dc8	# ubuntu
+  165  docker ps -a
+
+
+ACCESS FROM OUTSIDE using network
+ 171  docker ps
+  172  docker inspect b0cc06d655d3 | grep i- ip
+  173  docker inspect b0cc06d655d3 | grep -i ip
+  174  clear
+  175  ping 172.17.0.4
+  176  curl http://172.17.0.4:8080
 
 
 	
