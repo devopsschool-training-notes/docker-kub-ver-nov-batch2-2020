@@ -199,16 +199,87 @@ https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commu
    13  which containerd
    14  history
 
+========================================================================
+========================================================================
+
+Container LifeCYCLE
+================================
+create -> start -> stop -> start -> pause -> unpause -> kill -> remove
+		  ===============
+			restart -> pause -> unpause 
 
 
 
+Which APPs which i want to run inside a containers?
+===========================
 
+ubuntu
+centos
+fedora
+jenkins
+	rootfs + users + jdk + jenkins
+		 jenkins
+jira
+sonarqube
+-----------------------------------------
+	You need image.
 
+ 16  docker info
+   17  clear
+   18  docker images
+   19  docker images
+   20  docker pull jenkins
+   21  clear
+   22  docker images
+   23  docker ps
+   24  docker ps -a
+   25  cleae
+   26  clear
+   27  docker create jenkins
+   28  docker images
+   29  docker ps
+   30  docker ps -a
+   31  docker create jenkins
+   32  docker ps -a
+   33  clear
+   34  docker ps -a
+   35  docker start 46c57a65d191
+   36  docker ps -a
+   37  docker stop 6fd77d63d62a
+   38  docker ps -a
+   39  docker stop 46c57a65d191
+   40  docker ps -a
+   41  xlear
+   42  clear
+   43  docker ps -a
+   44  docker start 46c57a65d191
+   45  docker ps -a
+   46  clear
+   47  docker pause 46c57a65d191
+   48  docker ps -a
+   49  docker unpause 46c57a65d191
+   50  docker ps -a
+   51  docker kill 46c57a65d191
+   52  docker ps -a
+   53  clear
+   54  docker ps -a
+   55  docker rm 46c57a65d191 6fd77d63d62a
+   56  docker ps -a
+   57  history
 
+Assignment
+------------------------
+Diff Between STOP Vs KILL
+Diff Between Pause Vs unPause 
 
-
-
-
+ 57  history
+   58  clear
+   59  docker help
+   60  docker help pause
+   61  docker help unpause
+   62  docker help stop
+   63  docker help kill
+   64  history
 
 
 
