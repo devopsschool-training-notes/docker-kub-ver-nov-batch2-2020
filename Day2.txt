@@ -85,11 +85,58 @@ Assignment
 =============================
 update	Update configuration of one or more containers
 wait	Block until one or more containers stop, then print their exit codes
+=============================
+
+logs
+
+	Fetch the logs of a container AKA LOGS of PID1
+
+ 189  docker ps
+  190  docker logs ff7f0543fd00
+  191  watch docker logs ff7f0543fd00
+  192  docker logs ff7f0543fd00
+  193  docker los
+  194  docker logs
+  195  docker ps
+  196  docker logs 8b2a948a9c91
+  197  docker logs 8b2a948a9c91
+  198  watch docker logs 8b2a948a9c91
+  199  history
+
+
+stats
+ 201  docker stats
+  202  docker stats ff7f0543fd00
+  203  docker ps
+  204  docker stats
+  205  docker ps
+  206  docker pause 53bdbb763fad
+  207  docker ps
+  208  clear
+  209  docker pause 53bdbb763fad
+  210  docker stats
+  211  history
 
 
 
+top
+212  clear
+  213  docker ps
+  214* ps -eaf | grep docke
+  215  clear
+  216  docker ps
+  217  ps -eaf | grep /bin/tini
+  218  ps -eaf | grep /bin/bash
+  219  docker top ff7f0543fd00
 
 
+events
+
+ 221  clear
+  222  docker events
+  223  docker events
+  224  hisory
+  225  history
 
 
 
