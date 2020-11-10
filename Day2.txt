@@ -139,6 +139,127 @@ events
   225  history
 
 
+====================================================
+Docker Volume
+============================================
+Containers are EMP*
+-----------------------
+Data in the Container are also EMP*
+------------------------------
+BUT we need DATA persistency....BEYOND Containers Lifecycle.
+
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+Volume - Types
+- volume	/var/lib/docker/volumes 
+- mntfs		ANY PLACE IN THE HOST MACHINE
+- tempfs	Memory
+
+
+ 232  ls
+  233  docker volume
+  234  clear
+  235  ls
+  236  docker volume ls
+  237  docker volume prune
+  238  clear
+  239  ls
+  240  docker volume ls
+  241  docker volume create dev1
+  242  ls
+  243  docker volume create dev2
+  244  ls
+  245  docker volume create dev3
+  246  docker volume rm dev3
+  247  ls
+  248  docker volume inspect dev3
+  249  docker volume inspect dev2
+  250  docker volume
+  251  ls
+  252  docker run -itd -v dev1:/tmp ubuntu
+  253  docker ps
+  254  clear
+  255  docker ps
+  256  docker exec 55f7d4335d83 df -kh
+  257  docker run -itd -v dev1:/tmp/raju ubuntu
+  258  docker p
+  259  docker ps
+  260  clear
+  261  docker ps
+  262  docker exec d4dd948bb00a df -kh
+  263  docker exec d4dd948bb00a touch //tmp/raju/kaka.txt
+  264  docker ps
+  265  docker exec d4dd948bb00a ls /tmp
+  266  docker exec d4dd948bb00a ls /tmp/raju
+  267  docker exec 55f7d4335d83 /tmp
+  268  docker exec 55f7d4335d83 ls /tmp
+  269  ls
+  270  cd dev1
+  271  ls
+  272  cd _data/
+  273  ls
+  274  touch fdsfsf
+  275  ls
+  276  docker exec 55f7d4335d83 ls /tmp
+  277  cd ..
+  278  ls
+  279  clear
+  280  cd ..
+  281  ls
+  282  docker ps -a
+  283  docker stop d4dd948bb00a 55f7d4335d83
+  284  docker rm d4dd948bb00a 55f7d4335d83
+  285  ls
+  286  cd dev1/
+  287  ls
+  288  cd _data/
+  289  ls
+  290  docker run -itd -v dev1:/opt/raju1 -v dev2:/opt/raju2 ubuntu
+  291  docker ps
+  292  docker exec 2dee3c3a993e ls /
+  293  docker exec 2dee3c3a993e ls /opt
+  294  docker exec 2dee3c3a993e ls /opt/raju1
+  295  clear
+  296  ls
+  297  cd ..
+  298  clear
+  299  ls
+  300  cd ..
+  301  ls
+  302  cd ..
+  303  ls
+  304  pwd
+  305  cd /opt/
+  306  ls
+  307  pwd
+  308  mkdkir backup
+  309  mkdir backup
+  310  ls
+  311  cd backup/
+  312  clear
+  313  pwd
+  314  docke run -itd -v /opt/backup:/opt/ramu ubuntu
+  315  docker run -itd -v /opt/backup:/opt/ramu ubuntu
+  316  docker ps
+  317  docker exec e653f5587a0c /opt
+  318  docker exec e653f5587a0c ls /opt
+  319  touch sdffs
+  320  docker exec e653f5587a0c ls /opt/ramu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A
 
 
 
