@@ -1,0 +1,100 @@
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+13.233.86.246
+
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+
+CP
+
+ 191  touch devopsschool.txt
+  192  ls
+  193  docker ps
+  194  docker run -itd ubuntu /bin/bash
+  195  docker ps
+  196  ls
+  197  docker exec 323ada7ba91f ls /opt
+  198  docker cp devopsschool.txt 323ada7ba91f:/opt
+  199  docker exec 323ada7ba91f ls /opt
+  200  ls
+  201  clear
+  202  ls
+  203  rm -rf devopsschool.txt
+  204  ls
+  205  docker cp 323ada7ba91f:/opt/devopsschool.txt .
+  206  ls
+
+diff
+	Once a container get created - after that any files/dir
+	- ADDED
+	- CHANGED
+	- DELETED...
+	you get info using this command.
+
+ 208  clear
+  209  docker ps
+  210  docker attach 323ada7ba91f
+  211  docker ps
+  212  clear
+  213  docker ps -a
+  214  docker diff 323ada7ba91f
+  215  docker start 323ada7ba91f
+  216  docker diff 323ada7ba91f
+  217  history
+
+================================
+What kind of AUTH we have to access a DOCKER Container.
+================================
+DOCKER NEEDs ROOT to run docker commands.
+ROOT can access every thing menas every user.
+COntainer is a process for the HOST machine
+- 
+Do a root need access to a process(user) to get inside?
+===================================================
+port
+
+  234  docker ps
+  235  ps -eaf | grep docker
+  236  clear
+  237  docker run -d -p 8080:8080 jenkins
+  238  docker ps
+  239  docker port 53bdbb763fad
+  240  docker port 8b2a948a9c91
+
+
+rename
+
+ 243  docker ps
+  244  docker run -itd --name dev1 ubuntu
+  245  docker ps
+  246  docker help run
+  247  clear
+  248  ls
+  249  docker ps
+  250  docker rename 323ada7ba91f dev2
+  251  docker rename affectionate_galileo dev3
+  252  docker ps
+  253  docker start dev1 dev2 dev3
+  254  docker ps
+  255  docker stop dev1 dev2 dev3
+  256  docker ps
+  257  docker start dev1 dev2 dev3
+  258  docker ps
+  259  history
+
+
+Assignment
+=============================
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+
+
+
+
+
+
+
+
+
+
+
+
+
