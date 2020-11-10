@@ -416,6 +416,64 @@ root@c6d0e13ea96e:/# history
   481  docker ps
   482  docker exec 14a2eb3f2360 git
   483  history
+============================================================
+How to share an Images?
+==================
+1. Using Tar ball
+
+ 439  docker images
+  440  cd
+  441  ls
+  442  pwd
+  443  ls
+  444  docker save -o ub-up-git-ap-java.tar ub-up-git-ap-java
+  445  ls
+  446  docker ps -a
+  447  docker stop f61976e7bfe5  14a2eb3f2360
+  448  docker rm f61976e7bfe5  14a2eb3f2360
+  449  clear
+  450  ls
+  451  docker images
+  452  docker rmi ub-up-git-ap-java
+  453  docker images
+  454  ls
+  455  docker load -i ub-up-git-ap-java.tar
+  456  docker images
+  457  docker run -itd ub-up-git-ap-java
+  458  docker ps
+  459  clear
+  460  docker ps
+
+
+2. Using hub.docker.com registry
+
+Step 1	- Register at hub.docker.com
+Step 2  - Verify your account
+Step 3  - Create a public repo at hub.docker.com
+Step 4  - Make sure that your LOCAL Image repo name MUST Match with repo name of hub.docker.com
+Step 5  - Docker login
+Step 6 - docker push reponame
+
+ 439  docker images
+  440  docker tag ub-up-git-ap-java devopsschools/dev23
+  441  docker images
+  442  docker login
+  443  clear
+  444  docker images
+  445  docker push devopsschools/dev23
+  446  history
+  447  docker tag ub-up-git-ap-java devopsschools/dev23:v2
+  448  docker push devopsschools/dev23:v2
+
+
+3. Using Artifactory 
+
+
+
+
+
+
+
 
 
 Method 2 - Using Dockerfile - Automated CI way
