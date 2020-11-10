@@ -352,17 +352,79 @@ Volume - Types
   537  df -kh
   538  find . -name rajesh.txt
   539  history
+==========================================================
+
+How to create an Docker Image?
+==================================
+Method 1 - Using Existing Container - Manual way
+
+ROOTFS - UBUNTU
+ 445  docker run -itd ubuntu
+  446  docker ps
+  447  docker attach c6d0e13ea96e
+
+
+App - git - java - apache
+----------Inside a container ---------------
+root@c6d0e13ea96e:/# history
+    1  clear
+    2  apt-get install git
+    3  apt-get update
+    4  apt-get install git
+    5  git
+    6  apt-get install openjdk-8-jre
+    7  java
+    8  which apache2
+    9  apt-get install apache2 -y
+   10  which apache2
+   11  git
+   12  java
+   13  which apache2
+   14  history
+
+450  docker ps
+  451  git
+  452  docker exec c6d0e13ea96e git
+  453  history
+  454  clear
+  455  docker ps -a
+  456  docker diff c6d0e13ea96e
+  457  clear
+  458  ls
+  459  docker ps
+  460  docker history ubuntu
+  461  docker commit -m"ub-up-git-ap-java" -a"Rajesh kumar" c6d0e13ea96e ub-up-git-ap-java
+  462  docker history ubuntu
+  463  docker images
+  464  docker history ubuntu
+  465  docker history ub-up-git-ap-java
+  466  docker ps -a
+  467  docker stop c6d0e13ea96e
+  468  docker rm c6d0e13ea96e
+  469  clear
+  470  docker images
+  471  docker run -itd --name ub1 ubuntu
+  472  docker ps
+  473  docker run -itd --name uball ub-up-git-ap-java
+  474  docker ps
+  475  clear
+  476  ls
+  477  docker ps
+  478  docker exec f61976e7bfe5 git
+  479  docker ps
+  480  clear
+  481  docker ps
+  482  docker exec 14a2eb3f2360 git
+  483  history
+
+
+Method 2 - Using Dockerfile - Automated CI way
 
 
 
 
 
 
-
-
-
-
-A
 
 
 
