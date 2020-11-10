@@ -245,10 +245,113 @@ Volume - Types
   318  docker exec e653f5587a0c ls /opt
   319  touch sdffs
   320  docker exec e653f5587a0c ls /opt/ramu
+===========================================================
+
+13.233.190.64
 
 
-
-
+  438  docker ps -a
+  439  docker rm e653f5587a0c  2dee3c3a993e
+  440  clear
+  441  docker ps -a
+  442  docker images
+  443  docker rmi ubuntu jenkins
+  444  docker images
+  445  clear
+  446  docker info
+  447  cd /var/lib/docker
+  448  ls
+  449  docker info
+  450  ls
+  451  cd overlay2
+  452  ls
+  453  du -sh
+  454  cd ..
+  455  ls
+  456  cd image/
+  457  ls
+  458  du -sh .
+  459  cd ..
+  460  clear
+  461  ls
+  462  docker pull ubuntu
+  463  ls
+  464  cd overlay2/
+  465  clear
+  466  ls
+  467  du -sh .
+  468  cd ..
+  469  ls
+  470  clear
+  471  ls
+  472  cd image/
+  473  ls
+  474  du -sh .
+  475  cd overlay2/
+  476  cleare
+  477  clear
+  478  ls
+  479  pwd
+  480  cd ..
+  481  ls
+  482  clear
+  483  ls
+  484  cd ..
+  485  ls
+  486  cd overlay2/
+  487  clear
+  488  ls
+  489  docker inspect ubuntu
+  490  ls
+  491  clear
+  492  ls
+  493  du -h --max-depth=1
+  494  cd ./e9e585ff90cfdf18cffee8598ec1c4da4a0e270d18ec9458b6fd250615e03d20
+  495  ls
+  496  clear
+  497  ls
+  498  cd diff/
+  499  ls
+  500  cd ..
+  501  ls
+  502  cd ..
+  503  ls
+  504  clear
+  505  ls
+  506  docker history ubuntu
+  507  ls
+  508  clear
+  509  pwd
+  510  docker run -itd ubuntu
+  511  ls
+  512  du -sh c3c3a7a4cbf9b400fd3b75af04f39df385081bb3a5b69a3636bf0ce98db0f8bb
+  513  du -sh c3c3a7a4cbf9b400fd3b75af04f39df385081bb3a5b69a3636bf0ce98db0f8bb-init
+  514  clear
+  515  ls
+  516  df -kh
+  517  cd /var/lib/docker/overlay2/c3c3a7a4cbf9b400fd3b75af04f39df385081bb3a5b69a3636bf0ce98db0f8bb/merged
+  518  ls
+  519  cd ..
+  520  clear
+  521  ls
+  522  pwd
+  523  ls
+  524  df -kh
+  525  docker ps
+  526  clear
+  527  docker ps
+  528  docker exec ed3a6e82cfff touch /opt/rajesh.txt
+  529  pwd
+  530  find . -name rajesh.txt
+  531  ls
+  532  docker ps
+  533  docker stop ed3a6e82cfff
+  534  df -kh
+  535  find . -name rajesh.txt
+  536  docker start ed3a6e82cfff
+  537  df -kh
+  538  find . -name rajesh.txt
+  539  history
 
 
 
