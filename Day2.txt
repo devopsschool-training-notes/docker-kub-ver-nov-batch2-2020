@@ -468,24 +468,69 @@ Step 6 - docker push reponame
 
 3. Using Artifactory 
 
-
-
-
-
-
-
-
-
 Method 2 - Using Dockerfile - Automated CI way
+-======================================================
+What is Dockerfile?
+	- a file
+		contains
+		-------
+		LINES OF Instructions which shall be done for EACH Layer.
+
+	- Each line of a dockerfile is ONE Layer
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar devops@Rajeshkumar.xyz
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update 
+RUN apt-get -y install tzdata
+RUN apt-get install git -y 
+RUN apt-get install apache2 -y
+RUN apt-get install openjdk-8-jre -y
+
+docker build -t raju .
+
+	- A LAYER or LINE Changes is been done in the CONTAINER OF Previous LINE Container.
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar devops@Rajeshkumar.xyz
+RUN touch /opt/raju2.txt
+RUN touch /opt/raju22.txt
+RUN touch /opt/raju222.txt
+
+docker build -d filename -t raju1 .
 
 
 
+FROM ubuntu
+MAINTAINER Rajesh Kumar devops@Rajeshkumar.xyz
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update 
+RUN apt-get -y install tzdata
+RUN apt-get install git -y 
+RUN apt-get install apache2 -y
+RUN apt-get install openjdk-8-jre -y
+ENV JAVA_HOME=/opt/java
+COPY index.html /opt
+VOLUME /tmp/ramukaka
 
+ 592  clear
+  593  docker build -t doc3 -f doc3 .
+  594  clear
+  595  docker images
+  596  docker run -itd doc3
+  597  docker ps
+  598  docker exec 80ac34b29864 git
+  599  clear
+  600  docker exec 80ac34b29864 which apache2
+  601  docker exec 80ac34b29864 java
+  602  java
+  603  clear
+  604  docker exec 80ac34b29864 java
+  605  clear
+  606  docker exec 80ac34b29864 env
+  607  docker exec 80ac34b29864 ls /opt
+  608  docker exec 80ac34b29864 df -kh
 
-
-
-
-
-
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
 
 
