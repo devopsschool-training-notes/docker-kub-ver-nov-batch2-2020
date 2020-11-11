@@ -1,0 +1,155 @@
+13.235.51.118
+=======================
+CMD Vs Entrypoint
+=======================
+Docker-Compose
+=======================
+
+lets trace a developmene of Jenkins
+======================================
+
+Jenkins
+	openjdk:8-jdk
+		buildpack-deps:buster-scm			
+			buildpack-deps:buster-curl
+				debian:buster
+					scratch	 LAYER - 0
+
+============================
+CMD Vs Entrypoint
+============================
+How to set PID1?
+===========================
+	CMD
+	ENTRYPOINT
+========================
+CMD Vs Entrypoint
+
+	- CMD can be over written during run time
+	- Entrypoint CAN NOT be over written during run time
+
+===============================================
+Assingment
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
+
+A Dockerfile has
+	- 2 CMD
+	- 2 Entrypoint 
+	- 1 CMD and 1 Entrypoint
+===============================================
+Docker-Compose
+===============================================
+Pain Area Working with Docker as a 
+		- Dev
+		- QA
+
+docker-compose
+		read one file called  docker-compose.yaml
+		docker-compose.yaml contains..
+		
+		Services:
+			
+			Service1
+				build	- dockerfile
+				image	- dockerimage
+				net	- netowkr name
+				vol	- volname
+				env
+				port
+	
+			Service2
+				build	- dockerfile
+				image	- dockerimage
+				net	- netowkr name
+				vol	- volname
+				env
+				port
+	
+			Service3
+				build	- dockerfile
+				image	- dockerimage
+				net	- netowkr name
+				vol	- volname
+				env
+				port
+
+
+
+docker-compose build
+docker-compose up 
+		build + create + start
+docker-compose down
+docker-compose stop
+docker-compose start
+docker-compose stop
+docker-compose rm
+	
+		 716  clear
+  717  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  718  sudo chmod +x /usr/local/bin/docker-compose
+  719  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  720  docker-compose --version
+  721  history
+
+
+
+
+
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
+
+
+docker-compose build
+docker-compose up -d 
+		build + create + start
+docker-compose down
+docker-compose stop
+docker-compose start
+docker-compose stop
+docker-compose rm
+
+728  vi docker-compose.yaml
+  729  docker-compose ps
+  730  docker-compose up -d
+  731  docker-compose ps
+  732  docker-compose down
+  733  docker-compose ps
+  734  docker-compose up -d
+  735  docker-compose ps
+  736  docker-compose stop
+  737  docker-compose ps
+  738  docker-compose start
+  739  docker-compose ps
+  740  docker-compose logs
+  741  history
