@@ -153,3 +153,66 @@ docker-compose rm
   739  docker-compose ps
   740  docker-compose logs
   741  history
+==================================================================
+==================================================================
+How to Setups k8s Clustor?
+===========================
+Master Node
+- API server		- POD - Container - Image - GoogleRegistry
+- etcd			- POD - Container - Image - GoogleRegistry
+- Controller mgr	- POD - Container - Image - GoogleRegistry	
+- Schedular		- POD - Container - Image - GoogleRegistry
+
+- kubelet
+- Docker
+- Kube Proxy		- POD - Container - Image - GoogleRegistry
+
+Worker Node
+- kubelet
+- Docker
+- Kube Proxy		- POD - Container - Image - GoogleRegistry
+
+Workstation
+- kubectl
+
+
+Manual way using KUBEADM
+==============================
+Planning 
+1 - Master + Workstation	=== CENTOS 2
+2 - Worker			=== CENTOS 1
+==========================================================================
+65.0.135.151
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.2.78:6443 --token 0w6eez.gth7iyfg8ttw836i \
+    --discovery-token-ca-cert-hash sha256:443be1f1a0ea32c790f71ba037c74281bdab0acb0db02a799a133755747aa702
+
+13.235.135.180
+
+
+Erors and SOl
+https://www.devopsschool.com/blog/kubernetes-error-kubeadm-related-errors-and-solutions/
+https://www.devopsschool.com/blog/
+https://www.devopsschool.com/blog/how-to-delete-remove-clean-existing-corrupted-or-old-kubeadm-kubernetes-clusters-setup/
+
+
+
+
+
+
+
+
