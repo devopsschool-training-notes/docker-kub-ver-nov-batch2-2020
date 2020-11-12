@@ -283,11 +283,89 @@ spec:
   109  kubectl delete -f pod.yaml
   110  kubectl delete -f pod.yaml -n=rajesh
   111  history
+====================================================================
+How to Use pods?
+=========================
+
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  cp            Copy files and directories to and from containers.
+  auth          Inspect authorization
 
 
 
+ 121  kubectl get pods -n=rajesh
+  122  ls
+  123  kubectl create -f -n=rajesh
+  124  kubectl create -f pod.yaml -n=rajesh
+  125  kubectl get pods -n=rajesh
+  126  kubectl logs hello-pod -n=rajesh
+  127  clear
+  128  kubectl logs hello-pod -n=rajesh
+  129  watch kubectl logs hello-pod -n=rajesh
+
+ 19  kubectl get pods -o wide -n=rajesh
+   20  curl http://10.44.0.1
+   21  clear
+   22  watch curl http://10.44.0.1
+   23  history
 
 
 
+   26  kubectl get pods -o wide -n=rajesh
+   27  kubectl attach hello-pod
+   28  kubectl attach hello-pod -n=rajesh
 
-	
+watch curl http://10.44.0.1
+
+
+ 133  kubectl get pods -n=rajesh
+  134  kubectl exec hello-pod ls -n=rajesh
+  135  kubectl exec hello-pod df -kh -n=rajesh
+  136  kubectl exec hello-pod df  -n=rajesh
+  137  kubectl exec hello-pod dfdd  -n=rajesh
+  138  clear
+  139  kubectl exec -it hello-pod /bin/bash  -n=rajesh
+
+
+kubectl port-forward pod/hello-pod 8888:80
+
+kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80
+
+
+ 143  kubectl get pods -n=rajesh -o wide
+  144  ping 10.44.0.1
+  145  curl http://10.44.0.1
+  146  clear
+  147  ls
+  148  kubectl port-forward -h
+  149  clear
+  150  kubectl get pods -n=rajesh -o wide
+  151  clear
+  152  kubectl port-forward pod/hello-pod 8888:80
+  153  kubectl port-forward pod/hello-pod 8888:80 -n=rajesh
+  156  kubectl port-forward -h
+  157  clear
+  158  kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80
+  159  kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80 -n=rajesh
+  160  history
+
+ 166  kubectl cp pod.yaml hello-pod:/tmp -n=rajesh
+  167  kubectl exec hello-pod ls /tmp -n=rajesh
+  168  kubectl cp -
+  169  kubectl cp -h
+
+
+ 170  history
+  171  clear
+  172  kubectl auth -h
+  173  kubectl auth can-i create pods
+  174  kubectl auth can-i delete pods
+  175  kubectl auth can-i edit pods
+  176  kubectl auth can-i get  pods
+  177  kubectl auth can-i -h
+  178  history
+
+
