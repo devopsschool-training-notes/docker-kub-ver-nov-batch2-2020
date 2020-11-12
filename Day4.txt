@@ -367,5 +367,79 @@ kubectl port-forward --address 0.0.0.0 pod/hello-pod 8888:80
   176  kubectl auth can-i get  pods
   177  kubectl auth can-i -h
   178  history
+==========================================================
+========================================================
+RC = ReplicationController
+
+Replication - Replicate Many PODS.
+Controller == Your desired PODS would be controlled with Actual.
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
+
+
+
+ 180  kubectl create -h
+  181  clear
+  182  ls
+  183  vi rc.yaml
+  184  kubectl create -f rc.yaml -n=rajesh
+  185  kubectl ge rc
+  186  kubectl get rc
+  187  kubectl get rc -n=rajesh
+  188  kubectl describe rc hello-rc -n=rajesh
+  189  clear
+  190  ls
+  191  kubectl get pods -n=rajesh
+  192  kubectl describe pod hello-rc-74gcn -n=rajesh
+  193  clear
+  194  kubectl get pods -n=rajesh
+  195  kubectl describe pod hello-pod -n=rajesh
+  196  clwar
+  197  clear
+  198  ls
+  199  kubectl get rc -n=rajesh
+  200  kubectl edit rc hello-rc -n=rajesh
+  201  kubectl get pods -n=rajesh
+  202  vi rc.yaml
+  203  kubectl apply -f rc -n=rajesh
+  204  kubectl apply -f rc.yaml -n=rajesh
+  205  kubectl get pods -n=rajesh
+  206  clear
+  207  kubectl scale -h
+  208  clear
+  209  kubectl get rc -n=rajesh
+  210  kubectl scale --replicas=6 rc/hello-rc -n=rajesh
+  211  kubectl get rc -n=rajesh
+  212  clear
+  213  ls
+  214  kubectl get pods -n=rajesh
+  215  kubectl delete pods hello-rc-576f8 hello-rc-74gcn hello-rc-kmnlp hello-rc-lg5pj -n=rajesh
+  216  kubectl get pods -n=rajesh
+  217  kubectl delete pods hello-pod -n=rajesh
+  218  kubectl get pods -n=rajesh
+  219  history
+
+
+
+
+
+
+
+
 
 
