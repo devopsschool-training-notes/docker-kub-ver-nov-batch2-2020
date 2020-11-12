@@ -434,11 +434,139 @@ spec:
   218  kubectl get pods -n=rajesh
   219  history
 
++=========================================================
+
+  178  ls
+  179  kubectl explain ns
+  180  clear
+  181  kubectl explain ns.spec
+  182  kubectl explain pods
+  183  clear
+  184  kubectl explain pods.spec
+  185  clear
+  186  kubectl explain pods.spec.containers
+  187  clear
+  188  kubectl explain pods.spec.containers.volumeMounts
+  189  clear
+  190  ls
+  191  kubectl explain rc
+  192  kubectl explain rc.spec
+  193  kubectl explain rc.spec.template
+  194  kubectl explain rc.spec.template.spec
+  195  kubectl explain deploy
+  196  kubectl explain deploy.spec
+  197  kubectl explain deploy.spec.template
+  198  kubectl explain deploy.spec.template.spec
+  199  kubectl explain deploy.spec.template.spec.containers
+  200  history
 
 
 
++=========================================================
+Deployment
+================================
+Replication
+Controller
 
+Versioning
+Rollout
+Rollback
 
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+
+kubectl scale --replicas=10 deploy/my-dep -n=rajesh
+
+  125  kubectl create -h
+  126  kubectl create deployment -h
+  127  clear
+  128  kubectl get nodes
+  129  kubectl get pods --all-namespaces
+  130  kubectl get pods --all-namespaces | wc -l
+  131  kubectl delete ns thameem
+  132  kubectl get nodes
+  133  watch kubectl get nodes
+  134  clear
+  135  watch kubectl get nodes
+  136  watch kubectl get pods
+  137  kubectl get pods --all-namespaces
+  138  clear
+  139  kubectl get pods --all-namespaces | wc -l
+  140  kubectl get nodes
+  141  kubectl taint node ip-172-31-2-78.ap-south-1.compute.internal node-role.kubernetes.io/master:NoSchedule-
+  142  clear
+  143  ls
+  144  kubectl get nodes
+  145  history
+  146  clear
+  147  kubectl create deployment -h
+  148  clear
+  149  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  150  kubectl get deploy -n=rajesh
+  151  kubectl get pods -n=rajesh
+  152  clear
+  153  ls
+  154  kubectl get pods -n=rajesh
+  155  kubectl get deploy -n=rajesh
+  156  kubectl describe deploy my-dep -n=rajesh
+  157  clear
+  158  kubectl get deploy -n=rajesh
+  159  kubectl edit deploy my-dep -n=rajesh
+  160  kubectl get deploy -n=rajesh
+  161  clear
+  162  ls
+  163  kubectl get pods -n=rajesh
+  164  kubectl get pods -n=rajesh -o wide
+  165  kubectl get nodes
+  166  clear
+  167  kubectl get ns
+  168  clear
+  169  ls
+  170  kubectl scale -h
+  171  clear
+  172  kubectl get deploy -n=rajesh
+  173  kubectl scale --replicas=10 deploy/my-dep -n=rajesh
+  174  kubectl get deploy -n=rajesh
+  175  watch kubectl get deploy -n=rajesh
+  176  lear
+  177  clear
+  178  ls
+  179  kubectl explain ns
+  180  clear
+  181  kubectl explain ns.spec
+  182  kubectl explain pods
+  183  clear
+  184  kubectl explain pods.spec
+  185  clear
+  186  kubectl explain pods.spec.containers
+  187  clear
+  188  kubectl explain pods.spec.containers.volumeMounts
+  189  clear
+ 202  kubectl get deploy -n=rajesh
+  203  kubectl get deploy my-dep -n=rajesh
+  204  kubectl get deploy my-dep -n=rajesh -o json
+  205  kubectl get deploy my-dep -n=rajesh -o yaml
+  206  clear
+  207  kubectl get deploy my-dep -n=rajesh -o yaml
+  208  clear
+  209  kubectl get deploy my-dep -n=rajesh -o yaml >> mydep.yaml
+  210  ls
+  211  more mydep.yaml
+  212  vi mydep.yaml
+  213  clear
+  214  ls
+  215  kubectl apply -f mydep.yaml -n=rajesh
+  216  kubectl get deploy my-dep -n=rajesh -o yaml
+  217  clear
+  218  kubectl get deploy -n=rajesh
+  219  kubectl get pods -n=rajesh
+  220  kubectl delete pod my-dep-747b4ffb56-47qm2 my-dep-747b4ffb56-4hrdg my-dep-747b4ffb56-5r5fq my-dep-747b4ffb56-7dxw4 my-dep-747b4ffb56-9bkt8 my-dep-747b4ffb56-fg4kd my-dep-747b4ffb56-fld7q my-dep-747b4ffb56-j77dn
+  221  kubectl delete pod my-dep-747b4ffb56-47qm2 my-dep-747b4ffb56-4hrdg my-dep-747b4ffb56-5r5fq my-dep-747b4ffb56-7dxw4 my-dep-747b4ffb56-9bkt8 my-dep-747b4ffb56-fg4kd my-dep-747b4ffb56-fld7q my-dep-747b4ffb56-j77dn -n=rajesh
+  222  kubectl get pods -n=rajesh
+  223  clear
+  224  kubectl get deploy -n=rajesh
+  225  kubectl delete deploy my-dep -n=rajesh
+  226  ls
+  227  kubectl delete -f mydep.yaml -n=rajesh
 
 
 
