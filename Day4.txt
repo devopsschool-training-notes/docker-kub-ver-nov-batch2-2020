@@ -569,5 +569,36 @@ kubectl scale --replicas=10 deploy/my-dep -n=rajesh
   227  kubectl delete -f mydep.yaml -n=rajesh
 
 
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+
+kubectl rollout status deploy/my-dep -n=rajesh 
 
 
+  134  kubectl get deploy -n=rajesh
+  135  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  136  kubectl get deploy -n=rajesh
+  137  kubectl rollout history deploy my-dep -n=rajesh
+  138  kubectl get pods -n=rajesh -o wide
+  139  curl http://10.44.0.1
+  140  kubectl edit deploy my-dep -n=rajesh
+  141  kubectl get pods -n=rajesh -o wide
+  142  curl http://10.44.0.2
+  143  kubectl rollout history deploy my-dep -n=rajesh
+  144  clear
+  145  kubectl get pods -n=rajesh -o wide
+  146  kubectl delete deploy my-dep -n=rajesh
+  147  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  148  kubectl get deploy =n=rajesh
+  149  kubectl get deploy -n=rajesh
+  150  kubectl edit deploy my-dep -n=rajesh
+  151  kubectl rollout status deploy/my-dep1 -n=rajesh
+  152  kubectl rollout status deploy/my-dep -n=rajesh
+  153  history
+  154  kubectl rollout history deploy my-dep -n=rajesh
+  155  kubectl get deploy -n=rajesh
+  156  kubectl get pods -n=rajesh -o wide
+  157  curl http://10.32.0.28
+  158  kubectl rollout undo deploy/my-dep --to-revision=1 -n=rajesh
+  159  kubectl rollout status deploy/my-dep -n=rajesh
+  160  kubectl get pods -n=rajesh -o wide
+  161  curl http://10.44.0.15
