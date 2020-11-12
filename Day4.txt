@@ -236,6 +236,55 @@ CRUD
    59  kubectl get ns
    60  kubectl delete ns dev qa
    61  kubectl create ns rajesh
+============================================================
+============================================================
+pod.yaml
+-------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+  83  ls
+   84  pwd
+   85  vi pod.yaml
+   86  kubectl create -f pod.yaml
+   87  kubectl get pods
+   88  kubectl get pods -n=rajesh
+   89  kubectl create -f pod.yaml
+   90  kubectl create -f pod.yaml -n=rajesh
+   91  kubectl get pods -n=rajesh
+   92  kubectl get pods
+   93  clear
+   94  kubectl get pods --all-namespaces
+   95  kubectl get pods --all-namespaces -o wide
+   96  clear
+   97  ls
+   98  kubectl get pods
+   99  kubectl get pods -n=rajesh
+  100  kubectl describe pod hello-pod
+  101  clear
+  102  ls
+  103  kubectl get pods -n=rajesh
+  104  kubectl get pods -n=rajesh --show-labels
+  105  kubectl edit pods hello-pod -n=rajesh
+  106  kubectl get pods -n=rajesh --show-labels
+  107  kubectl get pods
+  108  kubectl delete pod hello-pod
+  109  kubectl delete -f pod.yaml
+  110  kubectl delete -f pod.yaml -n=rajesh
+  111  history
+
+
 
 
 
