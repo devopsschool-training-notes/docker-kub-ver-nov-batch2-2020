@@ -189,6 +189,200 @@ ver-593672737.ap-south-1.elb.amazonaws.com
  1043  watch curl http://ver.devopsschool.com
  1044  history
 [centos@ip-172-31-2-78 rajesh]$
+==============================================================================
+==============================================================================
+Storage
+====================
+Pods are EMPHERAL
+====================
+How can we have data PERSISTED Beyond PODs lifecycle?
+-----------------------------------------------
 
+- BLOCK Storage = Laptop storage, EBS = ATTACHD TO ONE COMPUTE UNIT, HDD, SSD, Magnetic
+- Object Storage = GIT, s3, Google Drive - Access throgh http.....
+- File Storage AKA Network storage === nfs, efs
+
+How kubernete would UNDERSTAND these tech?
+
+	THEY NEED Driver...
+			Called VOLUME PLUGINS.
+			- Built in
+
+
+GCEPersistentDisk
+AWSElasticBlockStore
+AzureFile
+AzureDisk
+CSI
+FC (Fibre Channel)
+FlexVolume
+Flocker
+NFS
+iSCSI
+RBD (Ceph Block Device)
+CephFS
+Cinder (OpenStack block storage)
+Glusterfs
+VsphereVolume
+Quobyte Volumes
+HostPath (Single node testing only -- local storage is not supported in any way and WILL NOT WORK in a multi-node cluster)
+Portworx Volumes
+ScaleIO Volumes
+StorageOS
+Persisten
+===========================================================================
+
+=================================================================================
+How to avail all kind of vol for KUbernetes clustor?
+
+=============================== KUbernetes ===============================
+==========================================================================
+		Admin		| 		User
+
+
+Provisioning 			| Binding  ==>  Using  ==> Reclaim
+
+
+How - STATIC and DYNAMIC
+
+- Persistent Volumes-Pv		| PVC  	=> pod.spec.volume & pod.spec.containers.volumemounts
+	- Static
+VS
+- Storage Class - sc
+	- Dynamic
+
+======================================================
+POOL of storage
+---------------------------------
+10 - 1 GB 
+10 - 2 GB
+--------------
+	20
+
+2 - 1 GB - ASKING - CLAIMING by USER - (Binding)
+
+
+
+============================================================
+
+
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath2
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath1
+
+
+ 1003  kubectl get pv
+ 1004  cd rajesh/
+ 1005  ls
+ 1006  vi pv1.yahml
+ 1007  mv pv1.yahml pv1.yaml
+ 1008  ls
+ 1009  vi pv2.yaml
+ 1010  clear
+ 1011  ls
+ 1012  kubectl apply -f pv1.yaml
+ 1013  kubectl apply -f pv2.yaml
+ 1014  kubectl get pv
+ 1015  kubectl get pvc
+ 1016  kubectl get pvc -n=rajesh
+ 1017  vi pvc1.yaml
+ 1018  kubectl apply -f pvc1.yaml -n=rajesh
+ 1019  kubectl get pvc -n=rajesh
+ 1020  vi pvc2.yaml
+ 1021  kubectl apply -f pvc2.yaml -n=rajesh
+ 1022  kubectl get pvc -n=rajesh
+ 1023  kubectl get pv -n=rajesh
+ 1024  clear
+ 1025  ls
+ 1026  vi nn.yaml
+ 1027  kubectl apply -f nn.yaml -n=rajesh
+ 1028  kubectl get pods -n=rajesh
+ 1029  kubectl exec task-pv-pod ls //usr/share/nginx/html
+ 1030  kubectl exec task-pv-pod ls /usr/share/nginx/html
+ 1031  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1032  kubectl exec task-pv-pod touch /usr/share/nginx/html/raju.txt -n=rajesh
+ 1033  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1034  cd /usr/share/nginx/html
+ 1035  cd /tmp/devopsschool
+ 1036  kubectl get nodes
+ 1037  kubectl get pods =n=rajesh -o wide
+
+NFS
+https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
+https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 
 
