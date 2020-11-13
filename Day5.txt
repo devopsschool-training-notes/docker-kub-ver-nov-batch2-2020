@@ -385,4 +385,89 @@ NFS
 https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
 https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 
+=====================================
+K8s.
+================
+Authentication - WHO SHOULD Logged into k8s?
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+- Certificates
+
+=========================
+How it works!!!
+
+Step 1 - USER would generate Private KEy		[ USER ]
+Step 2 - Private KEy to CSR				[ USER ]
+Step 3 - CSR sent to K8s Admin				[ USER ]
+Step 4 - Certify CSR using CA[Master]output - crt	[ Admin ]
+Step 5 - Add Private KEy and crt in config file		[ USER ]
+
+sudo openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/centos/employee.crt -days 500
+
+kubectl config set-credentials employee --client-certificate=/home/centos/employee.crt  --client-key=/home/centos/employee.key
+
+kubectl config set-context employee-context --cluster=kubernetes --namespace=office --user=employee
+
+kubectl --context=employee-context get pods
+
+ 1047  openssl genrsa -out employee.key 2048
+ 1048  ls
+ 1049  openssl req -new -key employee.key -out employee.csr -subj "/CN=employee/O=bitnami"
+ 1050  ls
+ 1051  sudo openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ec2-user/tecnotree/employee.crt -days 500
+ 1052  ls
+ 1053  pwd
+ 1054  clear
+ 1055  sudo openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/centos/employee.crt -days 500
+ 1056  ls
+ 1057  clear
+ 1058  kubectl config set-credentials employee --client-certificate=/home/centos/employee.crt  --client-key=/home/centos/employee.key
+ 1059  kubectl config set-context employee-context --cluster=kubernetes --namespace=office --user=employee
+ 1060  kubectl --context=employee-context get pods
+
+
+
+Authorization - WHat you can do in k8s?
+
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/
+
+RBAC
+---------------
+
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: office
+  name: deployment-manager
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
+
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: deployment-manager-binding
+  namespace: office
+subjects:
+- kind: User
+  name: employee
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deployment-manager
+  apiGroup: ""
+
+
+
+============================
+$ kubectl --context=employee-context run nginx --image=nginx
+$ kubectl --context=employee-context get pods
+
+
+
+
+
+
 
