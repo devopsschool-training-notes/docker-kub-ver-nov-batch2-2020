@@ -1,0 +1,194 @@
+13.233.157.67
+============================
+[centos@ip-172-31-13-255 rajeshk]$ kubectl create service -h
+Create a service using specified subcommand.
+
+Aliases:
+service, svc
+
+Available Commands:
+  clusterip    Create a ClusterIP service.
+  externalname Create an ExternalName service.
+  loadbalancer Create a LoadBalancer service.
+  nodeport     Create a NodePort service.
+
+Usage:
+  kubectl create service [flags] [options]
+=========================================================
+clusterip = cluster ip == Service would have IP address of Clustor network
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+
+
+nodeport == Node Port = Service is accessible at Port of the NODE...
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		- This service get port-forward at EACH NODE of the cluster.
+
+loadbalancer	
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		- This service get port-forward at EACH NODE of the cluster.
+		- Create External loadbalancer at CLOUD platoform
+		- Add Each Node of the cluster to the xternal loadbalancer
+=========================================
+13.233.157.67
+
+
+
+
+
+WHY THIS SVC?
+----------------------
+Assignment
+-------------------------
+[centos@ip-172-31-2-78 ~]$ kubectl get svc
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   43h
+[centos@ip-172-31-2-78 ~]$
+
+kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+
+
+ 920  clear
+  921  kubectl get svc
+  922  kubectl get svc -n=rajesh
+  923  kubectl create -h
+  924  clear
+  925  kubectl create -h
+  926  clear
+  927  kubectl create service -h
+  928  kubectl create service clusterip -h
+  929  clear
+  930  kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+  931  kubectl get svc -n=rajesh
+  932  ping 10.96.72.175
+  933  kubectl describe svc my-cs -n=rajesh
+  934  clear
+  935  ls
+  936  vi pod.yaml
+  937  more rc.yaml
+  938  clear
+  939  ls
+  940  cd rajesh/
+  941  ls
+  942  vi pod.yaml
+  943  ls
+  944  more pod.yaml
+  945  clear
+  946  kubectl get pods -n=rajesh
+  947  kubectl delete deploy my-dep -n=rajesh
+  948  clear
+  949  kubectl get pods -n=rajesh
+  950  clear
+  951  kubectl get pods -n=rajesh
+  952  clear
+  953  kubectl get pods -n=rajesh
+  954  kubectl create -f pod.yaml -n=rajesh
+  955  kubectl get pods -n=rajesh
+  956  kubectl get pods -n=rajesh -o wide --show-labels
+  957  kubectl get pods -n=rajesh -o wide --show-labels;kubectl get svc -n=rajesh --show-labels
+  958  kubectl describe svc my-cs -n=rajesh
+  959  vi pod.yaml
+  960  clear
+  961  kubectl apply -f pod.yaml -n=rajesh
+  962  kubectl get pods -n=rajesh -o wide --show-labels;kubectl get svc -n=rajesh --show-labels
+  963  kubectl describe svc my-cs -n=rajesh
+  964  curl http://10.96.72.175
+  965  curl http://10.96.72.175:5678
+  966  curl http://10.32.0.3:80
+  967  clear
+  968  vi pod.yaml
+  969  kubectl apply -f pod.yaml -n=rajesh
+  970  kubectl get svc -n=rajesh
+  971  kubectl edit svc my-cs -n=rajesh
+  972  kubectl get pods -n=rajesh -o wide --show-labels;kubectl get svc -n=rajesh --show-labels
+  973  kubectl describe svc my-cs -n=rajesh
+  974  vi pod.yaml
+  975  kubectl apply -f pod.yaml -n=rajesh
+  976  kubectl get pods -n=rajesh -o wide --show-labels;kubectl get svc -n=rajesh --show-labels
+  977  kubectl describe svc my-cs -n=rajesh
+  978  ls
+  979  cp pod.yaml pod1.yaml
+  980  vi pod1.yaml
+  981  clear
+  982  kubectl apply -f pod1.yaml
+  983  kubectl describe svc my-cs -n=rajesh
+  984  vi pod1.yaml
+  985  kubectl describe svc my-cs -n=rajesh
+  986  kubectl apply -f pod1.yaml -n=rajesh
+  987  kubectl describe svc my-cs -n=rajesh
+  988  vi pod1.yaml
+  989  kubectl apply -f pod1.yaml -n=rajesh
+  990  clear
+  991  kubectl describe svc my-cs -n=rajesh
+  992  curl http://10.96.72.175:5678
+  993  watch curl http://10.96.72.175:5678
+  994  clear
+  995  ls
+  996  kubectl get svc
+  997  kubectl get svc -n=rajesh
+
+
+
+kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+
+
+ 996  kubectl get svc
+  997  kubectl get svc -n=rajesh
+  998  history
+  999  clear
+ 1000  kubectl create service -h
+ 1001  kubectl create service nodeport -h
+ 1002  clear
+ 1003  kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+ 1004  kubectl get svc -n=rajesh
+ 1005  curl http://10.105.72.192:5678
+ 1006  kubectl describe svc my-ns -n=rajesh
+ 1007  kubectl get pods -n=rajesh -o wide --show-labels;kubectl get svc -n=rajesh --show-labels
+ 1008  kubectl edit svc my-ns -n=rajesh
+ 1009  kubectl describe svc my-ns -n=rajesh
+ 1010  curl http://10.105.72.192:5678
+ 1011  history
+
+kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
+
+ 1013  ls
+ 1014  kubectl create service -h
+ 1015  kubectl create service loadbalancer -h
+ 1016  clear
+ 1017  kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
+ 1018  kubectl get svc -n-rajesh
+ 1019  kubectl get svc -n=rajesh
+ 1020  kubectl get pods -n=rajesh --show-labels
+ 1021  kubectl edit svc my-lbs -n=rajesh
+ 1022  curl http
+ 1023  curl http://10.110.123.62:5678
+ 1024  watch curl http://10.110.123.62:5678
+ 1025  curl http://13.233.157.67:32154
+ 1026  watch curl http://13.233.157.67:32154
+
+ver-593672737.ap-south-1.elb.amazonaws.com
+
+
+ 1028  clear
+ 1029  kubectl edit svc my-lbs -n=rajesh
+ 1030  kubectl get svc -n=rajesh
+ 1031  curl http://13.233.157.67:32154
+ 1032  clear
+ 1033  ls
+ 1034  curl http://ver-593672737.ap-south-1.elb.amazonaws.com
+ 1035  kubectl get svc -n=rajesh
+ 1036  curl http://10.110.123.62:5678
+ 1037  curl http://13.233.157.67:32154
+ 1038  clear
+ 1039  curl http://ver-593672737.ap-south-1.elb.amazonaws.com
+ 1040  clear
+ 1041  watch curl http://ver-593672737.ap-south-1.elb.amazonaws.com
+ 1042  curl http://ver.devopsschool.com
+ 1043  watch curl http://ver.devopsschool.com
+ 1044  history
+[centos@ip-172-31-2-78 rajesh]$
+
+
+
